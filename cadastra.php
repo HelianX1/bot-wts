@@ -40,7 +40,7 @@ if (isset($_POST['produto']) && isset($_POST['palavra_chave'])) {
                     <a class="nav-link" href="cadastra.php">Cadastrar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Listar.php">Listar</a>
+                    <a class="nav-link" href="listar.php">Listar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="excluir.php">Excluir</a>

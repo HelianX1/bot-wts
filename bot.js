@@ -2,13 +2,11 @@ var request = require('request');
 
 const qrcode = require('qrcode-terminal');
 
-const { Client, LocalAuth } = require('whatsapp-web.js');
+const { Client } = require('whatsapp-web.js');
 
-const client = new Client({
-    authStrategy: new LocalAuth()
-});
+const client = new Client();
 
-palavras = ['Tela','Display','bateria','carcaça','carcasa','do','4g','5g','?', '!', '.', ',', 'dock','doc'];
+palavras = ['Tela','Display','Bateria','Carcaça','carcasa','do','4g','5g','?', '!', '.', ',', 'Dock','Doc','Moto','Xiaomi','Motorola'];
 
 client.on('ready', () => {
     console.log('Client is ready!');
@@ -28,11 +26,12 @@ client.on('message', message => {
         message.body = message.body.replace(palavra, '');
     });
     
-    request('http://localhost/botwtz1.1/src/api_consulta.php?produto=' + message.body, function (error, response, body) {
+    request('http://localhost/api_consulta.php?produto=' + message.body, function (error, response, body) {
  
-        if (body.includes('\n\nNenhum produto encontrado')) {
-            console.log('Nenhum produto encontrado');
-        } else {
+        if (body.includes('440')) {
+            console.log('Produto não encontrado');
+            
+        } else{
             console.log('Produto encontrado');
             message.reply(body.trim());
         }
